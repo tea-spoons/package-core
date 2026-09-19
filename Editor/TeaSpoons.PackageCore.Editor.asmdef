@@ -1,0 +1,18 @@
+{
+    "name": "TeaSpoons.PackageCore.Editor",
+    "rootNamespace": "TeaSpoons.PackageCore.Editor",
+    "references": [
+        "GUID:8da508d980990b740ae19fbce055a6b6"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
