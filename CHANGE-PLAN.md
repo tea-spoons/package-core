@@ -17,6 +17,34 @@ Originally developed at Bigpoint. Published here with Bigpoint's permission for 
 
 - [x] Tag and publish `v1.5.0` with the Release workflow.
 - [ ] Run this package's tests in CI with `unity-ci-kit` (needs a small test-project helper in the kit).
+<!-- review-items:start -->
+- [ ] **P1** Write per-type documentation with a minimal example each. It is the package everything else builds on.
+- [ ] **P1** Reduce the duplication: decide which helpers are truly shared, and make the stand-ins in logging, static-data and stacking-dialogs either thin or unnecessary.
+- [ ] **P1** Declares `unity: 2022.3`, but only Unity 6000.3.8f1 was tested. Add a Unity version matrix to CI once package tests run there (see the `unity-ci-kit` plan), or raise the minimum.
+- [ ] **P2** In `PlayerLoopUtility` throw `InvalidOperationException` (or return a `bool`) with a clear message, and test insertion `Before`, `After` and `Append` on a fake loop.
+- [ ] **P2** Mention in the README that `ReadOnlyAttribute` overlaps with NaughtyAttributes and MyBox.
+- [ ] **P2** The README is only 24 lines. Add a short example for each public type.
+<!-- review-items:end -->
+
+<!-- review:start -->
+## Review (September 2026)
+
+Reviewed as a senior Unity engineer would: I read the code and compared the package with similar open-source projects (September 2026). Those projects are listed for ideas only. Nothing was copied from them, and their licenses are noted in case code is ever reused. Priorities: **P0** correctness bug or broken metadata, **P1** should be done soon, **P2** nice to have.
+
+### Compared with
+
+| Project | License | Worth noting |
+|---|---|---|
+| [dbrizov/NaughtyAttributes](https://github.com/dbrizov/NaughtyAttributes) | not checked | Inspector attributes such as ReadOnly and ShowIf without custom editors. |
+| [Deadcows/MyBox](https://github.com/Deadcows/MyBox) | not checked | `ReadOnly`, `ConditionalField` and many other attributes and tools. |
+
+### Findings from reading the code
+
+- **[Docs]** The README is 24 lines and says only "Core functionality for other packages". There are 22 public types with no description: `PlayerLoopUtility` (with `Path`, `Before`, `After`, `Append`), `PlayModeEditable`, `ObjectAmount`, `ReadOnlyAttribute` and its drawer, the `GUIColor`/`GizmosColor`/`HandlesColor` scopes, `EditorWebRequest` and `SerializedPropertyExtensions`.
+- **[Duplication]** Other packages now carry stand-ins for pieces of it (`GUIColor` in logging, `TryGetTargetObject` in static-data, `PlayModeEditable` and its drawer in stacking-dialogs). That is the same code in three places.
+- **[Overlap]** `ReadOnlyAttribute` does what NaughtyAttributes and MyBox already do.
+- **[Robustness]** `PlayerLoopUtility` throws a plain `Exception` when the system to insert before or after is not found.
+<!-- review:end -->
 
 ## Notes and ideas
 
