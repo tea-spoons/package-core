@@ -1,6 +1,6 @@
 {
   "name": "com.tea-spoons.package-core",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "displayName": "Package Core",
   "description": "Core functionality for other packages.",
   "unity": "2022.3",

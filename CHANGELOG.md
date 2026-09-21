@@ -1,3 +1,7 @@
+## [1.5.1] - 2026-09-21
+
+- No code changes. Independent development continues from this release, outside of Bigpoint; 1.5.0 was the last version developed there.
+
 ## [1.5.0] - 2025-09-17
 - Added ReadOnly inspector attribute
 - Added ObjectAmount type and inspector drawer
